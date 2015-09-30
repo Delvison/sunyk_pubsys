@@ -37,12 +37,12 @@
 	
 <h2> Sign In </h2>
 
-<form action="login.php" method = "post">
-User ID (SBU ID in case of students) : <br><input type = "text" name = "user"></input>
-<br></br>
-Password : <br><input type = "password" name = "pass" ></input> </br>
-<br>
-<input type = "submit" value= "Login"></input>
+<form action="../controllers/login_controller.php" method = "post">
+	User ID (SBU ID in case of students) : <br><input type = "text" name = "username"></input>
+	<br></br>
+	Password : <br><input type = "password" name = "password" ></input> </br>
+	<br>
+	<input type = "submit" value= "Login"></input>
 </form>
 <br>
 
