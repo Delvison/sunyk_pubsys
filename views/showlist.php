@@ -90,7 +90,6 @@
 <div style="float:left; width: 75%">
 <b></br>
 
-
 	<div align = "right" class="#searchInput"> 
 	<form method="post" name="display" action="authorsearch.php" /> 
 	<input type="text" placeholder=" Author Search" name="name" /> 
