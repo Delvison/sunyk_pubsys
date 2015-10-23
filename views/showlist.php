@@ -3,9 +3,62 @@
 <title> Publication v.0.0.1 </title>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"> </script>
+<script src="../jquery.js"> </script>
+<script
+src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
 
 <body background="text.JPG">
+<script>
+      // function for table filtering
+      $(document).ready(function()
+      {
+        $("#searchInput").keyup(function ()
+        {
+          //split the current value of searchInput
+          var data = this.value.split(" ");
+          //create a jquery object of the rows
+          var jo = $(".fbody").find("tr");
+          if (this.value == "") {
+            jo.show();
+            return;
+          }
+          //hide all the rows
+          jo.hide();
+          //Recusively filter the jquery object to get results.
+          jo.filter(function (i, v) {
+            var $t = $(this);
+            for (var d = 0; d < data.length; ++d)
+            {
+              if ($t.is( ":contains('" + data[d] + "')") ) {
+                return true;
+              }
+            }
+            return false;
+        })
+        //show the rows that match.
+        .show();
+        }).focus(function () {
+          this.value = "";
+          $(this).css({
+            "color": "black"
+          });
+          $(this).unbind('focus');
+        }).css({ "color": "#C0C0C0" });
+        $("#searchInput").focusout(function(){
+          if ($(this).val() == '') {
+            $(this).val('Filter...');
+          }
+          $(this).css({"color": "#C0C0C0" });
+        })
+        .focusin(function(){
+          if ($(this).val() == 'Filter...'){
+            $(this).val('');
+          }
+          $(this).css({"color": "black" });
+        });
+      });
+    </script>
 <img src="logo.PNG" style="float: left;width:100px;height:60px;" />
 <h2> &nbsp;&nbsp;DEPARTMENT OF COMPUTER SCIENCE</h2>
 
@@ -90,9 +143,9 @@
 <div style="float:left; width: 75%">
 <b></br>
 
-	<div align = "right" class="#searchInput"> 
+	<div align = "right" > 
 	<form method="post" name="display" action="authorsearch.php" /> 
-	<input type="text" placeholder=" Author Search" name="name" /> 
+	<input type="text" id="searchInput" placeholder=" Author Search" name="name" /> 
 	<input type="submit" name="Submit" value="Search" /> 
 	</form>
 	</div>
@@ -110,6 +163,31 @@
 <td><b>Year</td>
 <td><b>Country</td>
 <td><b>Paper Type</td>
+<tbody class="fbody"><tr>
+<td>meow</td>
+<td>meow</td>
+<td>meow</td>
+<td>meow</td>
+<td>meow</td>
+<td>meow</td>
+<td>meow</td>
+<td>meow</td>
+<td>meow</td>
+<td>meow</td>
+</tr></tbody>
+<tbody class="fbody"><tr>
+<td>dog</td>
+<td>dog</td>
+<td>dog</td>
+<td>dog</td>
+<td>dog</td>
+<td>dog</td>
+<td>dog</td>
+<td>dog</td>
+<td>dog</td>
+<td>dog</td>
+</tr></tbody>
+</table>
 
 
 </tr>
@@ -146,6 +224,18 @@ echo ("<td><a href=\"papedit.php?id=$row[ptitle]\">Edit</a></td>");
 echo ("<td><a href=\"datadelete.php?id=$row[ptitle]\">Delete</a></td></tr>");
 $i++;
 }
+echo("<tr>");
+echo("<td>meow</td>");
+echo("<td>meow</td>");
+echo("<td>meow</td>");
+echo("<td>meow</td>");
+echo("<td>meow</td>");
+echo("<td>meow</td>");
+echo("<td>meow</td>");
+echo("<td>meow</td>");
+echo("<td>meow</td>");
+echo("<td>meow</td>");
+echo("<tr>");
 echo "</table>";
 
 ?>
@@ -157,54 +247,4 @@ echo "</table>";
 
 </body>
 
-<script>
-      // function for table filtering
-      $(document).ready(function()
-      {
-        $("#searchInput").keyup(function ()
-        {
-          //split the current value of searchInput
-          var data = this.value.split(" ");
-          //create a jquery object of the rows
-          var jo = $(".fbody").find("tr");
-          if (this.value == "") {
-            jo.show();
-            return;
-          }
-          //hide all the rows
-          jo.hide();
-          //Recusively filter the jquery object to get results.
-          jo.filter(function (i, v) {
-            var $t = $(this);
-            for (var d = 0; d < data.length; ++d)
-            {
-              if ($t.is( ":contains('" + data[d] + "')") ) {
-                return true;
-              }
-            }
-            return false;
-        })
-        //show the rows that match.
-        .show();
-        }).focus(function () {
-          this.value = "";
-          $(this).css({
-            "color": "black"
-          });
-          $(this).unbind('focus');
-        }).css({ "color": "#C0C0C0" });
-        $("#searchInput").focusout(function(){
-          if ($(this).val() == '') {
-            $(this).val('Filter...');
-          }
-          $(this).css({"color": "#C0C0C0" });
-        })
-        .focusin(function(){
-          if ($(this).val() == 'Filter...'){
-            $(this).val('');
-          }
-          $(this).css({"color": "black" });
-        });
-      });
-    </script>
 </html>
